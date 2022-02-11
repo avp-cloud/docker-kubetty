@@ -40,7 +40,7 @@ spec:
         - "8080"
         - -w
         - /bin/bash
-        image: avpc/kubetty
+        image: ghcr.io/avp-cloud/kubetty
         name: kubetty
       serviceAccountName: admin
 ---
