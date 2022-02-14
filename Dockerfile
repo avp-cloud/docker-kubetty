@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y ca-certificates curl && \
+    apt-get install -y ca-certificates curl openssh-client iputils-ping && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 
 RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && mv kubectl /usr/bin/kubectl
@@ -24,6 +24,8 @@ RUN mkdir -p /home/appuser && chown -R appuser:appuser /home/appuser
 
 USER appuser
 WORKDIR /home/appuser
+COPY bashrc /home/appuser/.bashrc
+COPY bash_aliases /home/appuser/.bash_aliases
 
 ENV SHELL /bin/bash
 ENV TERM xterm-256color
