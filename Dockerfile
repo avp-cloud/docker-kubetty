@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y ca-certificates curl openssh-client iputils-ping procps-ng && \
+    apt-get install -y ca-certificates curl openssh-client iputils-ping kubectx && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 
 RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && mv kubectl /usr/bin/kubectl
