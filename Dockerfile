@@ -1,12 +1,14 @@
 FROM debian:stable-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y ca-certificates curl openssh-client iputils-ping kubectx && \
+    apt-get install -y ca-certificates curl openssh-client iputils-ping && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 
-RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && mv kubectl /usr/bin/kubectl
+RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && \
+    mv kubectl /usr/bin/kubectl && chmod +x /usr/bin/kubectl
 
-RUN chmod +x /usr/bin/kubectl
+RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens && \
+    mv kubens /usr/bin/kubens && chmod +x /usr/bin/kubens
 
 RUN curl -LO https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz && \
     tar -xvf gotty_2.0.0-alpha.3_linux_amd64.tar.gz && \
