@@ -35,7 +35,8 @@ RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser
 RUN mkdir -p /home/appuser && chown -R appuser:appuser /home/appuser
 
-COPY 00-aliases.sh /etc/profile.d/00-aliases.sh
+COPY bashrc /etc/bashrc-addon
+RUN cat /etc/bashrc-addon >> /etc/bash.bashrc
 COPY entrypoint.sh /entrypoint.sh
 
 USER appuser

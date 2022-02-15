@@ -1,3 +1,4 @@
+
 export PS1="\[\e[32m\]kubetty\[\e[m\]> "
 
 alias h="helm"
