@@ -18,8 +18,8 @@ RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens && \
     mv kubens /usr/bin/kubens && chmod +x /usr/bin/kubens
 
 # kubectx
-RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens && \
-    mv kubens /usr/bin/kubectx && chmod +x /usr/bin/kubectx
+RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx && \
+    mv kubectx /usr/bin/kubectx && chmod +x /usr/bin/kubectx
 
 # helm
 RUN curl -LO https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz && \
