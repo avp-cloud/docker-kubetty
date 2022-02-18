@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y ca-certificates curl openssh-client iputils-ping vim nano && \
+    apt-get install -y ca-certificates curl wget socat openssh-client iputils-ping vim nano && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 
 # gotty
@@ -16,6 +16,10 @@ RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && \
 # kubens
 RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens && \
     mv kubens /usr/bin/kubens && chmod +x /usr/bin/kubens
+
+# kubectx
+RUN curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens && \
+    mv kubens /usr/bin/kubectx && chmod +x /usr/bin/kubectx
 
 # helm
 RUN curl -LO https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz && \
